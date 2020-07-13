@@ -24,7 +24,7 @@ let playGame = (playerSelection, computerSelection) => {
     let winningMove = null;
     let losingMove = null;
 
-    if (playerSelection === "rock"){ 
+    if (playerSelection.toLowerCase() === "rock"){ 
         if (computerSelection === "paper"){ 
             winStatus = loser;
         }  
@@ -37,12 +37,12 @@ let playGame = (playerSelection, computerSelection) => {
         
     }
     //scissors beat paper
-    else if (playerSelection === "scissors"){
+    else if (playerSelection.toLowerCase() === "scissors"){
 
 
     }
     //paper beats rock
-    else if  (playerSelection === "paper"){
+    else if  (playerSelection.toLowerCase() === "paper"){
 
 
     }
