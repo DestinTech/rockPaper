@@ -1,9 +1,10 @@
-document.write("hello world! press F12 on your keyboard to access the console, to play rock paper sissors!");
+document.write("hello world! press F12 on your keyboard to access the console, to play rock paper scissors!");
 
 
-let computerPlay = () =>{ //return rock, paper, or sissors
+let computerPlay = () =>{ //return rock, paper, or scissors
     let randNo = Math.random();
     let randomMove;
+    console.log(randNo);
     if(randNo <= .333){
         randomMove = "rock";
     }
@@ -11,7 +12,7 @@ let computerPlay = () =>{ //return rock, paper, or sissors
         randomMove = "paper";
     }
     else {
-        randomMove = "sissors";
+        randomMove = "scissors";
     }
     return randomMove;
 }
@@ -23,27 +24,44 @@ let playGame = (playerSelection, computerSelection) => {
     let winStatus = null;
     let winningMove = null;
     let losingMove = null;
+    const tie = "It's a tie!";
+    console.log(playerSelection + " "+ computerSelection);
 
     if (playerSelection.toLowerCase() === "rock"){ 
         if (computerSelection === "paper"){ 
             winStatus = loser;
         }  
-        else if( computerSelection === "sissors"){
+        else if( computerSelection === "scissors"){
             winStatus = winner;
         }
         else if (computerSelection === "rock"){
-            return "It's a tie!"
+            return tie;
         }
         
     }
     //scissors beat paper
     else if (playerSelection.toLowerCase() === "scissors"){
-
-
+        if (computerSelection ==="rock"){
+            winStatus = loser;
+        }
+        else if (computerSelection === "paper"){
+            winStatus = winner;
+        }
+        else if(computerSelection ==="scissors"){
+            return tie;
+        }
     }
     //paper beats rock
     else if  (playerSelection.toLowerCase() === "paper"){
-
+        if (computerSelection ==="scissors"){
+            winStatus = loser;
+        }
+        else if (computerSelection === "rock"){
+            winStatus = winner;
+        }
+        else if(computerSelection === "paper"){
+            return tie;
+        }
 
     }
     else return ("Exception" + playerSelection + computerSelection);
@@ -64,3 +82,20 @@ let playGame = (playerSelection, computerSelection) => {
    return winnerMessage;
 }
 
+let game = () => {
+    let winCounter = 0;
+    let lossCounter = 0;
+    let roundScore = 0; 
+    for (let i = 0; i <= 5; i++){
+
+        roundScore = playGame(prompt(),computerPlay());
+        console.log(roundScore);
+
+        if (roundScore.includes("win")){
+            winCounter++;
+        }
+
+        console.log("Wins: "+ winCounter); 
+    }
+   
+}
