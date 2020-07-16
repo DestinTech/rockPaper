@@ -86,15 +86,20 @@ let playGame = (playerSelection, computerSelection) => {
     const rock = document.querySelector("#rock");
     const paper = document.querySelector("#paper");
     const scissors = document.querySelector("#scissors");
-    
+    const gameText = document.querySelector("#gameText");
+    const gameScore = document.querySelector('#gameScore');
+    let winCounter = 0;
+    let lossCounter = 0;
+
+    gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
     rock.addEventListener('click', () => {
-        playGame("rock", computerPlay());
+        gameText.textContent = playGame("rock", computerPlay());
     });
     paper.addEventListener('click',() => {
-        playGame("paper", computerPlay());
+        gameText.textContent = playGame("paper", computerPlay());
     });
     scissors.addEventListener('click',() => {
-        playGame("scissors", computerPlay());
+        gameText.textContent = playGame("scissors", computerPlay());
     });
 
 
