@@ -1,7 +1,5 @@
-document.write("hello world! press F12 on your keyboard to access the console, to play rock paper scissors!");
 
-
-let computerPlay = () =>{ //return rock, paper, or scissors
+let computerPlay = () =>{ //return rock, paper, or scissors; randomly generated computer input
     let randNo = Math.random();
     let randomMove;
     console.log(randNo);
@@ -17,6 +15,7 @@ let computerPlay = () =>{ //return rock, paper, or scissors
     return randomMove;
 }
 
+//logic to compare user input to computer input
 let playGame = (playerSelection, computerSelection) => {
     //rock beats scissors
     let loser = "lose";
@@ -82,20 +81,41 @@ let playGame = (playerSelection, computerSelection) => {
    return winnerMessage;
 }
 
-let game = () => {
-    let winCounter = 0;
-    let lossCounter = 0;
-    let roundScore = 0; 
-    for (let i = 0; i <= 5; i++){
 
-        roundScore = playGame(prompt(),computerPlay());
-        console.log(roundScore);
 
-        if (roundScore.includes("win")){
-            winCounter++;
-        }
+    const rock = document.querySelector("#rock");
+    const paper = document.querySelector("#paper");
+    const scissors = document.querySelector("#scissors");
+    
+    rock.addEventListener('click', () => {
+        playGame("rock", computerPlay());
+    });
+    paper.addEventListener('click',() => {
+        playGame("paper", computerPlay());
+    });
+    scissors.addEventListener('click',() => {
+        playGame("scissors", computerPlay());
+    });
 
-        console.log("Wins: "+ winCounter); 
-    }
-   
-}
+
+
+
+
+
+
+//let game = () => {
+//    let winCounter = 0;
+//    let lossCounter = 0;
+//    let roundScore = 0; 
+//    for (let i = 0; i <= 5; i++){
+
+//        roundScore = playGame(prompt(),computerPlay());
+//        console.log(roundScore);
+//
+//        if (roundScore.includes("win")){
+//            winCounter++;
+//        }
+//
+//        console.log("Wins: "+ winCounter); 
+//    }  
+//}
