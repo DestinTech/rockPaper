@@ -1,7 +1,5 @@
-document.write("hello world! press F12 on your keyboard to access the console, to play rock paper scissors!");
 
-
-let computerPlay = () =>{ //return rock, paper, or scissors
+let computerPlay = () =>{ //return rock, paper, or scissors; randomly generated computer input
     let randNo = Math.random();
     let randomMove;
     console.log(randNo);
@@ -17,6 +15,7 @@ let computerPlay = () =>{ //return rock, paper, or scissors
     return randomMove;
 }
 
+//logic to compare user input to computer input
 let playGame = (playerSelection, computerSelection) => {
     //rock beats scissors
     let loser = "lose";
@@ -82,20 +81,90 @@ let playGame = (playerSelection, computerSelection) => {
    return winnerMessage;
 }
 
-let game = () => {
+
+// Main 
+    const rock = document.querySelector("#rock");
+    const paper = document.querySelector("#paper");
+    const scissors = document.querySelector("#scissors");
+    const gameText = document.querySelector("#gameText");
+    const gameScore = document.querySelector('#gameScore');
     let winCounter = 0;
     let lossCounter = 0;
-    let roundScore = 0; 
-    for (let i = 0; i <= 5; i++){
+    let gameText_History = gameText.textContent;
 
-        roundScore = playGame(prompt(),computerPlay());
-        console.log(roundScore);
+    
+    
+    
+    rock.addEventListener('click', () => {
+        //play the game with  the specified input, store the returned result in the game area
+        gameText.textContent = playGame("rock", computerPlay());
 
-        if (roundScore.includes("win")){
-            winCounter++;
+        //check the return for win/loss 
+        if (gameText.textContent.includes("win")){
+            winCounter ++;
+        }
+        else if (gameText.textContent.includes('lose')){
+            lossCounter++;
+        }
+        //add to the counter the win/loss counter 
+        gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+
+    });
+    paper.addEventListener('click',() => {
+        //play the game with  the specified input, store the returned result in the game area
+        gameText.textContent = playGame("paper", computerPlay());
+
+        //check the return for win/loss         
+        if (gameText.textContent.includes("win")){
+            winCounter ++;
+        }
+        else if (gameText.textContent.includes('lose')){
+            lossCounter++;
         }
 
-        console.log("Wins: "+ winCounter); 
-    }
-   
-}
+        //add to the counter the win/loss counter 
+        gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+
+        
+    });
+    scissors.addEventListener('click',() => {
+        //play the game with  the specified input, store the returned result in the game area
+        gameText.textContent = playGame("scissors", computerPlay());
+        
+        //check the return for win/loss 
+        if (gameText.textContent.includes("win")){
+            winCounter ++;
+        }
+        else if (gameText.textContent.includes('lose')){
+            lossCounter++;
+        }
+
+        //add to the counter the win/loss counter 
+        gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+
+        
+    });
+    gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+
+    
+
+
+
+
+
+//let game = () => {
+//    let winCounter = 0;
+//    let lossCounter = 0;
+//    let roundScore = 0; 
+//    for (let i = 0; i <= 5; i++){
+
+//        roundScore = playGame(prompt(),computerPlay());
+//        console.log(roundScore);
+//
+//        if (roundScore.includes("win")){
+//            winCounter++;
+//        }
+//
+//        console.log("Wins: "+ winCounter); 
+//    }  
+//}

@@ -1,2 +1,2 @@
 # rockPaper
-A basic rock-paper-scissors project
+Rock-Paper-Scissors implimented in "vanilla" Javascript, with a User Interface. 
