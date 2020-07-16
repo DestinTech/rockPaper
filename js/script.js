@@ -82,7 +82,7 @@ let playGame = (playerSelection, computerSelection) => {
 }
 
 
-
+// Main 
     const rock = document.querySelector("#rock");
     const paper = document.querySelector("#paper");
     const scissors = document.querySelector("#scissors");
@@ -90,19 +90,63 @@ let playGame = (playerSelection, computerSelection) => {
     const gameScore = document.querySelector('#gameScore');
     let winCounter = 0;
     let lossCounter = 0;
+    let gameText_History = gameText.textContent;
 
-    gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+    
+    
+    
     rock.addEventListener('click', () => {
+        //play the game with  the specified input, store the returned result in the game area
         gameText.textContent = playGame("rock", computerPlay());
+
+        //check the return for win/loss 
+        if (gameText.textContent.includes("win")){
+            winCounter ++;
+        }
+        else if (gameText.textContent.includes('lose')){
+            lossCounter++;
+        }
+        //add to the counter the win/loss counter 
+        gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+
     });
     paper.addEventListener('click',() => {
+        //play the game with  the specified input, store the returned result in the game area
         gameText.textContent = playGame("paper", computerPlay());
+
+        //check the return for win/loss         
+        if (gameText.textContent.includes("win")){
+            winCounter ++;
+        }
+        else if (gameText.textContent.includes('lose')){
+            lossCounter++;
+        }
+
+        //add to the counter the win/loss counter 
+        gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+
+        
     });
     scissors.addEventListener('click',() => {
+        //play the game with  the specified input, store the returned result in the game area
         gameText.textContent = playGame("scissors", computerPlay());
+        
+        //check the return for win/loss 
+        if (gameText.textContent.includes("win")){
+            winCounter ++;
+        }
+        else if (gameText.textContent.includes('lose')){
+            lossCounter++;
+        }
+
+        //add to the counter the win/loss counter 
+        gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
+
+        
     });
+    gameScore.innerHTML = `Wins:  ${winCounter} <br/>Losses: ${lossCounter}`;
 
-
+    
 
 
 
